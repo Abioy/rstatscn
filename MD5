@@ -1,0 +1,8 @@
+a38a6f6092488cdd249551c48e78322a *DESCRIPTION
+fdbf25c646eb8f15e70b98d1c8a1b4e8 *NAMESPACE
+f9a44104bdc2a60cf59eaa303689d12b *R/rstatscn.R
+3d0a05973d4af9b78145dca25a0029d1 *man/statscnDbs.Rd
+e1e5ca33b3209f4e9289d530a2b87f72 *man/statscnQueryData.Rd
+16934dffccac645aea3d18e1f59c718c *man/statscnQueryLastN.Rd
+3cf5ceb8d8a0e6b07b1a29b4b7f9482d *man/statscnQueryZb.Rd
+d178dc6294c7bfa7e54e92ca86ad8367 *man/statscnRegions.Rd
