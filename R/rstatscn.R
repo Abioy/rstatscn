@@ -3,6 +3,7 @@ library(httr)
 
 statscnbase<-'http://data.stats.gov.cn/easyquery.htm'
 rstatscnEnv<-new.env()
+assign('prefix',NULL, envir=rstatscnEnv)
 
 #' private function for sec
 #' 
@@ -93,6 +94,12 @@ dataJson2df<-function(rawObj,rowcode,colcode)
         units=rowDes[,'unit']
         units=ifelse(units=="","",paste("(",units,")",sep=""))
         rowNames=paste(rowNames,units,sep="")
+
+	prefix=get('prefix', envir=rstatscnEnv)
+        if(! is.null(prefix) ){
+            mrows=1:length(rowNames)
+            rowNames = paste(mrows,rowNames,sep=".")
+        }
 
         rowCodes=rowDes[,2]
         colCodes=colDes[,2]
@@ -228,3 +235,24 @@ statscnQueryLastN<-function(n)
         return(dataJson2df(ret,curQuery$rowcode,curQuery$colcode))
 }
 
+#' statscnRowNamePrefix
+#' 
+#' set the rowName prefix in the dataframe
+#'
+#' in case you encounter the following error:
+#'   Error in `row.names<-.data.frame`(`*tmp*`, value = value) : 
+#'   duplicate 'row.names' are not allowed
+#' you need to call this function
+#' 
+#' @param p , how to set the rowname prefix. 
+#'     it is 'nrow' by default , and it is the only supported value currently
+#'     to unset the row name prefix, call this function with p=NULL
+#' @return no return
+#' @export 
+statscnRowNamePrefix<-function(p="nrow")
+{
+  if (p != "nrow" && ! is.null(p)) {
+    stop(sprintf("the only supported prefix is 'nrow' or NULL "))
+  }
+  assign('prefix',p, envir=rstatscnEnv)
+}
