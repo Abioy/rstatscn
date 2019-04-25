@@ -1,3 +1,15 @@
+## rstatscn 1.1.3
+
+### minor update
+
+* import the functions from httr and jsonlite
+
+## rstatscn 1.1.2
+
+### minor update
+
+* do not run the tests requiring the internet resources 
+
 ## rstatscn 1.1.1
 
 ### bug fixes
