@@ -87,9 +87,9 @@ dataJson2df<-function(rawObj,rowcode,colcode)
         #jj[[2]][[2]] is description
         #jj[[2]][[2]][,"nodes"][[1]] is row description , it is a dataframe
         #jj[[2]][[2]][,"nodes"][[2]] is col description , it is a dataframe
-        desList=ret[[2]][[2]][,'nodes']
-	rowWdIdx = which(ret[[2]][[2]]$wdcode == rowcode) 
-	colWdIdx = which(ret[[2]][[2]]$wdcode == colcode) 
+        desList=ret$returndata$wdnodes[,'nodes']
+	rowWdIdx = which(ret$returndata$wdnodes$wdcode == rowcode) 
+	colWdIdx = which(ret$returndata$wdnodes$wdcode == colcode) 
         rowDes=desList[[rowWdIdx]]
         colDes=desList[[colWdIdx]]
 
@@ -118,7 +118,7 @@ dataJson2df<-function(rawObj,rowcode,colcode)
         myret=as.data.frame(matrix(rep(NA,rowNum*colNum),nrow=rowNum))
         rownames(myret)=rowCodes
         colnames(myret)=colCodes
-        dfdata=ret[[2]][[1]]
+        dfdata=ret$returndata$datanodes[[1]]
         for (k in seq(1,nrow(dfdata))) {
 		wddf=dfdata[k,"wds"][[1]]
 		myret[wddf[rowWdIdx,'valuecode'],wddf[colWdIdx,'valuecode']] = dfdata[k,'data'][1,'data']
