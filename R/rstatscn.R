@@ -118,7 +118,7 @@ dataJson2df<-function(rawObj,rowcode,colcode)
         myret=as.data.frame(matrix(rep(NA,rowNum*colNum),nrow=rowNum))
         rownames(myret)=rowCodes
         colnames(myret)=colCodes
-        dfdata=ret$returndata$datanodes[[1]]
+        dfdata=ret$returndata$datanodes
         for (k in seq(1,nrow(dfdata))) {
 		wddf=dfdata[k,"wds"][[1]]
 		myret[wddf[rowWdIdx,'valuecode'],wddf[colWdIdx,'valuecode']] = dfdata[k,'data'][1,'data']
