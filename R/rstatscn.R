@@ -76,8 +76,8 @@ checkHttpStatus<-function(ret)
 dataJson2df<-function(rawObj,rowcode,colcode)
 {
 	ret=rawObj
-        if(ret[[1]] != 200) {
-		stop("Bad response from the statscn server")
+        if(ret$returncode != 200) {
+		stop(sprintf("Bad response from the statscn server: %d", ret$returncode))
 	}
         #dataStructure
 	#jj is a list
